@@ -1,4 +1,4 @@
-local keyMapper = require("utils.keyMapper").mapKey
+local mapKey = require("utils.keyMapper").mapKey
 
 return {
 	{
@@ -53,21 +53,21 @@ return {
 			-- Java
 			lspconfig.jdtls.setup({})
 
-			keyMapper("K", vim.lsp.buf.hover)
-			keyMapper("gd", function()
+			mapKey("K", vim.lsp.buf.hover)
+			mapKey("gd", function()
 				require("telescope.builtin").lsp_definitions()
 			end)
-			keyMapper("gD", function()
+			mapKey("gD", function()
 				require("telescope.builtin").lsp_type_definitions()
 			end)
-			keyMapper("gi", function()
+			mapKey("gi", function()
 				require("telescope.builtin").lsp_implementations()
 			end)
-			keyMapper("gr", function()
+			mapKey("gr", function()
 				require("telescope.builtin").lsp_references()
 			end)
-			keyMapper("<leader>ca", vim.lsp.buf.code_action)
-			keyMapper("<leader>rn", vim.lsp.buf.rename)
+			mapKey("<leader>ca", vim.lsp.buf.code_action)
+			mapKey("<leader>rn", vim.lsp.buf.rename)
 		end,
 	},
 }
