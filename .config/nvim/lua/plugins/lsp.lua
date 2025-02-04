@@ -29,6 +29,12 @@ return {
 					python = {
 						analysis = {
 							typeCheckingMode = "strict",
+							diagnosticMode = "workspace",
+							autoImportCompletions = true,
+							useLibraryCodeForTypes = true,
+							reportUnusedImport = true,
+							reportUnusedVariable = true,
+							reportUnusedFunction = true,
 						},
 					},
 				},
