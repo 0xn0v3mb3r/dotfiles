@@ -67,6 +67,7 @@ return {
 				require("telescope.builtin").lsp_references()
 			end)
 			keyMapper("<leader>ca", vim.lsp.buf.code_action)
+			keyMapper("<leader>rn", vim.lsp.buf.rename)
 		end,
 	},
 }
