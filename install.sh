@@ -1,10 +1,33 @@
 #!/bin/bash
 
-ln -s ~/dotfiles/.config/nvim ~/.config/nvim
-ln -s ~/dotfiles/.config/zsh ~/.config/zsh
-ln -s ~/dotfiles/.config/alias ~/.config/alias
-ln -s ~/dotfiles/.config/profile ~/.config/profile
+# Function to create a symlink after removing any existing file, directory, or symlink
+create_symlink() {
+    local target=$1
+    local link=$2
 
-ln -s ~/dotfiles/.zshrc ~/.zshrc
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
+    if [ -e "$link" ]; then
+        echo "Removing existing file, directory, or symlink: $link"
+        rm -rf "$link" && echo "Removed: $link" || echo "Failed to remove: $link"
+    fi
+
+    echo "Creating symlink: $link -> $target"
+    ln -s "$target" "$link" && echo "Symlink created: $link" || echo "Failed to create symlink: $link"
+}
+
+# List of files/directories to link
+declare -A links=(
+    ["$HOME/dotfiles/.config/nvim"]="$HOME/.config/nvim"
+    ["$HOME/dotfiles/.config/zsh"]="$HOME/.config/zsh"
+    ["$HOME/dotfiles/.config/alias"]="$HOME/.config/alias"
+    ["$HOME/dotfiles/.config/profile"]="$HOME/.config/profile"
+    ["$HOME/dotfiles/.zshrc"]="$HOME/.zshrc"
+    ["$HOME/dotfiles/.tmux.conf"]="$HOME/.tmux.conf"
+    ["$HOME/dotfiles/.p10k.zsh"]="$HOME/.p10k.zsh"
+)
+
+# Loop through and create symlinks
+for target in "${!links[@]}"; do
+    create_symlink "$target" "${links[$target]}"
+done
+
+echo "All symlinks have been created successfully!"
