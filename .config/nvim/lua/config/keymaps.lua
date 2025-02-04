@@ -26,3 +26,12 @@ end)
 mapKey("<leader>pw", function()
 	vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
 end)
+mapKey("<leader>de", function()
+	if vim.g.diagnostics_hidden then
+		vim.g.diagnostics_hidden = false
+		vim.diagnostic.show()
+	else
+		vim.g.diagnostics_hidden = true
+		vim.diagnostic.hide()
+	end
+end)
