@@ -13,6 +13,7 @@ return {
 				c = { "clang-format" },
 				cpp = { "clang-format" },
 				java = { "google-java-format" },
+        yaml = { "prettier" },
 			},
 			-- format_on_save = {
 			-- 	timeout_ms = 500,
