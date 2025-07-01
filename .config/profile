@@ -1,4 +1,7 @@
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+
+export PATH="/home/jhkim/.local/bin:$PATH"
